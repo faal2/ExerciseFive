@@ -11,11 +11,44 @@ namespace ExerciseFive.GarageWorld
     internal class Garage
     {
 
-        public Vehicle[] Vehicles { get; }
+        private Vehicle[] _vehicles;
+
+        public Vehicle[] Vehicles
+        {
+            get
+            {
+                return _vehicles;
+            }
+            set
+            {
+                _vehicles = value;
+            }
+        }
+
+        public int Slots {get; set;}
         public Garage(int capacity)
         {
             Vehicles = new Vehicle[capacity];
+            Slots = capacity;
 
         }
+
+        public void AddVehicle(Vehicle vehicle)
+        {
+            if (Slots ==0)
+            {
+                Console.WriteLine("FULL");
+
+            }
+            else if (Slots > 0)
+            {
+                Vehicles[Slots] = vehicle;
+                Slots--;
+
+            }
+
+
+        }
+
     }
 }
