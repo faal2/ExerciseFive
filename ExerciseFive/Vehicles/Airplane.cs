@@ -9,7 +9,8 @@ namespace ExerciseFive.Vehicles
 {
     public class Airplane(string registerNumber, Color color, int wheels = 6) : Vehicle(registerNumber, color, wheels)
     {
-
+        public int Lenght { get; set; }
 
     }
+
 }
