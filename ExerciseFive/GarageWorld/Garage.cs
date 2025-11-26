@@ -68,7 +68,10 @@ namespace ExerciseFive.GarageWorld
         {
             for (int i = 0; i < _values.Length; i++)
             {
-                yield return _values[i];
+                if (_values[i] != null)
+                {
+                    yield return _values[i];
+                }
             }
         }
 
