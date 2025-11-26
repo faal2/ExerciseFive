@@ -66,19 +66,16 @@ namespace ExerciseFive.GarageWorld
 
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < _values.Length; i++)
+            foreach (T value in _values)
             {
-                if (_values[i] != null)
+                if (value != null)
                 {
-                    yield return _values[i];
+                    yield return value;
                 }
             }
         }
 
         //For  backwards compatibility
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
