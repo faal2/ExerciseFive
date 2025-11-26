@@ -9,5 +9,6 @@ namespace ExerciseFive.Vehicles
 {
     internal class Motorcycle(string registerNumber, Color color) : Vehicle(registerNumber, color, 2)
     {
+        public bool HasPillionSeat { get; set; }
     }
 }
