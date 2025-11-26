@@ -8,33 +8,33 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ExerciseFive.GarageWorld
 {
-    internal class Garage
+    internal class Garage<T> where T : Vehicle
     {
 
-        private int _count = 0;
-        public Vehicle[] Vehicles { get; set; }
+        private int _occupied = 0;
+        public T[] Values { get; set; }
         public Garage(int capacity)
         {
-            Vehicles = new Vehicle[capacity];
+            Values = new T[capacity];
 
         }
-
-        public bool AddVehicle(Vehicle vehicle)
+        
+        public bool AddVehicle(T value)
         {
 
-            if (_count == Vehicles.Length)
+            if (_occupied == Values.Length)
             {
                 return false;
             }
 
             else 
             {
-                for (int i = 0; i < Vehicles.Length; i++)
+                for (int i = 0; i < Values.Length; i++)
                 {
-                    if (Vehicles[i] == null)
+                    if (Values[i] == null)
                 {
-                    Vehicles[i] = vehicle;
-                        _count++;
+                    Values[i] = value;
+                        _occupied++;
                         return true;
                     }
                 }
@@ -47,15 +47,15 @@ namespace ExerciseFive.GarageWorld
         
 
 
-        public bool RemoveVehicle(Vehicle vehicle)
+        public bool RemoveVehicle(T value)
         {
 
-            for (int i = 0; i < Vehicles.Length; i++)
+            for (int i = 0; i < Values.Length; i++)
             {
-                if (Vehicles[i] == vehicle)
+                if (Values[i] == value)
                 {
-                    _count--;
-                    Vehicles[i] = null;
+                    _occupied--;
+                    Values[i] = null;
                     return true;
                 }
             }
