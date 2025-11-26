@@ -9,13 +9,7 @@ namespace ExerciseFive.Vehicles
 {
     internal class Bus(string registerNumber, Color color, int seats = 25) : Vehicle(registerNumber, color, 4)
     {
-
-        private int _seats = seats;
-
-        public int NumberOfSeats ()
-        {
-            return _seats;
-        }
+        public int NumberOfSeats { get; } = seats;
 
     }
 }
