@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    public class Airplane : Vehicle
+    public class Airplane(string registerNumber, Color color, int wheels = 6) : Vehicle(registerNumber, color, wheels)
     {
 
-        public Airplane (string registerNumber, Color color, int wheels = 6) : base (registerNumber, color, wheels)
-        {
 
-        }
     }
 }

@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    internal class Car : Vehicle
+    internal class Car(string registerNumber, Color color) : Vehicle(registerNumber, color, 4)
     {
 
-        public Car(string registerNumber, Color color) : base(registerNumber, color, 4)
-        {
-
-        }
     }
 }
