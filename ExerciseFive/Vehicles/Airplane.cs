@@ -10,7 +10,7 @@ namespace ExerciseFive.Vehicles
     public class Airplane : Vehicle
     {
 
-        public Airplane (string registerNumber, Color color) : base (registerNumber, color, 6)
+        public Airplane (string registerNumber, Color color, int wheels = 6) : base (registerNumber, color, wheels)
         {
 
         }
