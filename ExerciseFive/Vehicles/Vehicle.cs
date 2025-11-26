@@ -7,20 +7,12 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    public abstract class Vehicle
+    public abstract class Vehicle(string registerNumber, Color color, int wheels)
     {
-        public string RegisterNumber { get; }
+        public string RegisterNumber { get; } = registerNumber;
+        public Color Color { get; } = color;
+        public int Wheels { get; } = wheels;
 
-        public Color Color { get; }
-
-        public int Wheels { get; }
-        public Vehicle(string registerNumber, Color color, int wheels)
-        {
-            RegisterNumber = registerNumber;
-            Color = color;
-            Wheels = wheels;
-            
-        }
         public override string ToString()
         {
             return $"Number: {RegisterNumber}, Color: {Color}, Wheels: {Wheels}";
