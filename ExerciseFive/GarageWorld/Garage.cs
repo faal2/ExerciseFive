@@ -1,5 +1,6 @@
 ﻿using ExerciseFive.Vehicles;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ExerciseFive.GarageWorld
 {
-    internal class Garage<T> where T : Vehicle
+    internal class Garage<T> : IEnumerable<T> where T : Vehicle
     {
 
         private int _occupied = 0;
@@ -63,5 +64,18 @@ namespace ExerciseFive.GarageWorld
 
         }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < _values.Length; i++)
+            {
+                yield return _values[i];
+            }
+        }
+
+        //For  backwards compatibility
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
