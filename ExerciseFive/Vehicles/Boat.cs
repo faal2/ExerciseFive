@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    internal class Boat(string registerNumber, Color color) : Vehicle(registerNumber, color, 0)
+    internal class Boat(string registerNumber, Color color, bool hasRoof) : Vehicle(registerNumber, color, 0)
     {
+        public bool HasRoof { get; } = hasRoof;
     }
 }
