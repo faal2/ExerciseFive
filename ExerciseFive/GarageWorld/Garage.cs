@@ -12,28 +12,28 @@ namespace ExerciseFive.GarageWorld
     {
 
         private int _occupied = 0;
-        public T[] Values { get; set; }
+        private T[] _values;
         public Garage(int capacity)
         {
-            Values = new T[capacity];
+            _values = new T[capacity];
 
         }
         
         public bool AddVehicle(T value)
         {
 
-            if (_occupied == Values.Length)
+            if (_occupied == _values.Length)
             {
                 return false;
             }
 
             else 
             {
-                for (int i = 0; i < Values.Length; i++)
+                for (int i = 0; i < _values.Length; i++)
                 {
-                    if (Values[i] == null)
+                    if (_values[i] == null)
                 {
-                    Values[i] = value;
+                        _values[i] = value;
                         _occupied++;
                         return true;
                     }
@@ -50,12 +50,12 @@ namespace ExerciseFive.GarageWorld
         public bool RemoveVehicle(T value)
         {
 
-            for (int i = 0; i < Values.Length; i++)
+            for (int i = 0; i < _values.Length; i++)
             {
-                if (Values[i] == value)
+                if (_values[i] == value)
                 {
                     _occupied--;
-                    Values[i] = null;
+                    _values[i] = null;
                     return true;
                 }
             }
