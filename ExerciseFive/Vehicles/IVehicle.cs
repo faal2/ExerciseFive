@@ -8,5 +8,8 @@ namespace ExerciseFive.Vehicles
 {
     internal interface IVehicle
     {
+        string RegisterNumber { get; }
+        Color Color { get;}
+        int Wheels { get; }
     }
 }
