@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    public class Vehicle
+    public abstract class Vehicle
     {
         public string RegisterNumber { get; }
 
