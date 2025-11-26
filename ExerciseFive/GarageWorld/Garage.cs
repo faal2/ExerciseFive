@@ -1,52 +1,65 @@
-﻿using System;
+﻿using ExerciseFive.Vehicles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using ExerciseFive.Vehicles;
 
 namespace ExerciseFive.GarageWorld
 {
     internal class Garage
     {
 
-        private Vehicle[] _vehicles;
-
-        public Vehicle[] Vehicles
-        {
-            get
-            {
-                return _vehicles;
-            }
-            set
-            {
-                _vehicles = value;
-            }
-        }
-
-        public int Slots {get; set;}
+        private int _count = 0;
+        public Vehicle[] Vehicles { get; set; }
         public Garage(int capacity)
         {
             Vehicles = new Vehicle[capacity];
-            Slots = capacity;
 
         }
 
-        public void AddVehicle(Vehicle vehicle)
+        public bool AddVehicle(Vehicle vehicle)
         {
-            if (Slots ==0)
-            {
-                Console.WriteLine("FULL");
 
-            }
-            else if (Slots > 0)
+            if (_count == Vehicles.Length)
             {
-                Vehicles[Slots] = vehicle;
-                Slots--;
-
+                return false;
             }
 
+            else 
+            {
+                for (int i = 0; i < Vehicles.Length; i++)
+                {
+                    if (Vehicles[i] == null)
+                {
+                    Vehicles[i] = vehicle;
+                        _count++;
+                        return true;
+                    }
+                }
+                return false;
+
+            }
+
+
+        }
+        
+
+
+        public bool RemoveVehicle(Vehicle vehicle)
+        {
+
+            for (int i = 0; i < Vehicles.Length; i++)
+            {
+                if (Vehicles[i] == vehicle)
+                {
+                    _count--;
+                    Vehicles[i] = null;
+                    return true;
+                }
+            }
+            return false;
 
         }
 
