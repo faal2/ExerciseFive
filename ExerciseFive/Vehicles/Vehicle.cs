@@ -7,12 +7,20 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    public abstract class Vehicle(string registerNumber, Color color, int wheels) : IVehicle
+    public abstract class Vehicle : IVehicle
     {
         private static HashSet<string> _uniqueRegisterNumber = new();
 
 
-        private string _registerNumber = registerNumber;
+        private string _registerNumber;
+
+
+        public Vehicle(string registerNumber, Color color, int wheels)
+        {
+            RegisterNumber = registerNumber;
+            Color = color;
+            Wheels = wheels;
+        }
 
         public string RegisterNumber {
         
@@ -35,8 +43,8 @@ namespace ExerciseFive.Vehicles
             }
         }
 
-        public Color Color { get; } = color;
-        public int Wheels { get; } = wheels;
+        public Color Color { get; }
+        public int Wheels { get; }
 
         public override string ToString()
         {
