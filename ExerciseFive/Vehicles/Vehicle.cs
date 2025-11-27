@@ -39,7 +39,7 @@ namespace ExerciseFive.Vehicles
                 }
                 else
                 {
-                    throw new ArgumentException($"This register number already exists {value}");
+                    throw new ArgumentException($"This register number already exists {value}", nameof(value));
                 }
                 
             }
