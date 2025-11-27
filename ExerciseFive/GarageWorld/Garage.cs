@@ -13,10 +13,10 @@ namespace ExerciseFive.GarageWorld
     {
 
         private int _occupied = 0;
-        private T[] _values;
+        private T?[] _values;
         public Garage(int capacity)
         {
-            _values = new T[capacity];
+            _values = new T?[capacity];
 
         }
         
@@ -64,7 +64,7 @@ namespace ExerciseFive.GarageWorld
 
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (T value in _values)
+            foreach (T? value in _values)
             {
                 if (value != null)
                 {
