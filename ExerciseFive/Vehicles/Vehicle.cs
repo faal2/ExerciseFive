@@ -7,9 +7,34 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    public abstract class Vehicle(string registerNumber, Color color, int wheels)
+    public abstract class Vehicle(string registerNumber, Color color, int wheels) : IVehicle
     {
-        public string RegisterNumber { get; } = registerNumber;
+        private static HashSet<string> _uniqueRegisterNumber = new();
+
+
+        private string _registerNumber = registerNumber;
+
+        public string RegisterNumber {
+        
+            get
+            {
+                return _registerNumber;
+            }
+            set
+            {
+                bool addRegisterNumber = _uniqueRegisterNumber.Add(value);
+                if (addRegisterNumber)
+                {
+                    _registerNumber = value;
+                }
+                else
+                {
+                    throw new ArgumentException($"This register number already exists {value}");
+                }
+                
+            }
+        }
+
         public Color Color { get; } = color;
         public int Wheels { get; } = wheels;
 

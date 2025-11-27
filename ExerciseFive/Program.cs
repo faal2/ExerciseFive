@@ -11,10 +11,17 @@ using System.Diagnostics.Metrics;
             //manager.Run();
 
             var garage = new Garage<Vehicle>(5);
-            var vehicle1 = new Vehicle("99", Color.Red, 1);
+            var vehicle1 = new Boat("99", Color.Red, true);
+            var vehicle2 = new Boat("88", Color.Blue, true);
 
             garage.AddVehicle(vehicle1);
+            garage.AddVehicle(vehicle2);
 
-            garage.RemoveVehicle(vehicle1);
+            foreach (var vehicle in garage)
+            {
+            Console.WriteLine(vehicle);
+            }
+
+            
             Console.WriteLine("Garage application done");
 

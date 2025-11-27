@@ -46,8 +46,6 @@ namespace ExerciseFive.GarageWorld
 
         }
         
-
-
         public bool RemoveVehicle(T value)
         {
 

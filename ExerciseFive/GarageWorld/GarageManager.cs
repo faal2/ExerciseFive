@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.GarageWorld
 {
-    internal class GarageHandler
+    internal class GarageManager
     {
     }
 }
