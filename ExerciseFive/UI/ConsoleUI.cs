@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.UI
 {
-    internal interface ConsoleUI
+    internal class ConsoleUI
     {
     }
 }
