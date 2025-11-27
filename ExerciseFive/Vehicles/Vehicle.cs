@@ -18,7 +18,7 @@ namespace ExerciseFive.Vehicles
 
         public Vehicle(string registerNumber, Color color, int wheels)
         {
-            RegisterNumber = registerNumber;
+            RegisterNumber = registerNumber.ToLower();
             Color = color;
             Wheels = wheels;
         }
