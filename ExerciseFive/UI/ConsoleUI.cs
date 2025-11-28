@@ -12,11 +12,12 @@ namespace ExerciseFive.UI
         public ConsoleUI()
         {
             Console.WriteLine("Welcome to the Garage application!");
-            InitializeGarage();
+            int sizeOfGarage = GetGarageSize();
+            bool seedData = GetSeedData();
             MenuLoop();
         }
 
-        public (int, bool) InitializeGarage()
+        public int GetGarageSize()
         {
             Console.WriteLine("Before we can start please pick the size of the garage (the amount of parking spots),"
                 + " please remember that once you pick the size it is permenant for the duration of the application.");
@@ -36,31 +37,7 @@ namespace ExerciseFive.UI
                             Environment.Exit(0);
                         }
                         Console.WriteLine($"The size of the garage: {sizeOfGarage}");
-
-                        while (true)
-                        {
-                            Console.WriteLine("Would you like to fill the garage with vehicles (Seed Data)? (y/n)");
-                            Console.Write("Choice: ");
-                            string? seedInput = Console.ReadLine()?.ToLower();
-
-                            if (seedInput == "0")
-                            {
-                                Console.WriteLine("You have ended the application");
-                                Environment.Exit(0);
-                            }
-                            else if (seedInput == "y")
-                            {
-                                return (sizeOfGarage, true);
-                            }
-                            else if (seedInput == "n")
-                            {
-                                return (sizeOfGarage, false);
-                            }
-                            else
-                            {
-                                Console.WriteLine("Please enter some valid input.");
-                            }
-                        }
+                        return sizeOfGarage;
                     }
                     else
                     {
@@ -73,8 +50,44 @@ namespace ExerciseFive.UI
                     Console.WriteLine("Please enter some input!");
                 }
             }
-
         }
+
+        public bool GetSeedData()
+        {
+            while (true)
+            {
+                Console.WriteLine("Would you like to fill the garage with vehicles (Seed Data)? (y/n)");
+                Console.Write("Write: ");
+                try
+                {
+                    string? seedInput = Console.ReadLine()?.ToLower();
+
+                    if (seedInput == "0")
+                    {
+                        Console.WriteLine("You have ended the application");
+                        Environment.Exit(0);
+                    }
+                    else if (seedInput == "y")
+                    {
+                        return true;
+                    }
+                    else if (seedInput == "n")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter some valid input.");
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter some input!");
+                }
+            }
+        }
+
         public void MenuLoop()
         {
             while (true)
@@ -82,7 +95,7 @@ namespace ExerciseFive.UI
                 Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 0) of your choice"
                     + "\n1. View garage"
                     + "\n2. Search"
-                    + "\n2. Check in/check out"
+                    + "\n3. Check in/check out"
                     + "\n0. Exit the application");
                 char input = ' '; //Creates the character input to be used with the switch-case below.
                 try
@@ -105,18 +118,11 @@ namespace ExerciseFive.UI
                     case '3':
 
                         break;
-                    case '4':
-
-                        break;
-                    /*
-                     * Extend the menu to include the recursive 
-                     * and iterative exercises.
-                     */
                     case '0':
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4)");
+                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3)");
                         break;
                 }
             }
