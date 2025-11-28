@@ -22,10 +22,5 @@ namespace ExerciseFive.Vehicles
 
         public Color Color { get; }
         public int Wheels { get; }
-
-        public override string ToString()
-        {
-            return $"Number: {RegisterNumber}, Color: {Color}, Wheels: {Wheels}";
-        }
     }
 }
