@@ -8,7 +8,6 @@ namespace ExerciseFive.UI
 {
     internal interface IUI
     {
-        string giveFeedback(bool goodOrBad);
-        string takeUserInput();
+        void Run();
     }
 }
