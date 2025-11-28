@@ -92,10 +92,12 @@ namespace ExerciseFive.UI
         {
             while (true)
             {
-                Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 0) of your choice"
-                    + "\n1. View garage"
-                    + "\n2. Search"
-                    + "\n3. Check in/check out"
+                Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3, 4, 5, 0) of your choice"
+                    + "\n1. View all the vehicles parked"
+                    + "\n2. View statistics of the parked vehicles"
+                    + "\n3. Search"
+                    + "\n4. Parking"
+                    + "\n5. Departing"
                     + "\n0. Exit the application");
                 char input = ' '; //Creates the character input to be used with the switch-case below.
                 try
@@ -118,11 +120,17 @@ namespace ExerciseFive.UI
                     case '3':
 
                         break;
+                    case '4':
+
+                        break;
+                    case '5':
+
+                        break;
                     case '0':
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3)");
+                        Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4, 5)");
                         break;
                 }
             }
