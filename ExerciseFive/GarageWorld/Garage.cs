@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,13 +40,13 @@ namespace ExerciseFive.GarageWorld
                         return true;
                     }
                 }
-                return false;
 
             }
 
+        throw new UnreachableException("Count was less than capacity and no null slot.");
 
         }
-        
+
         public bool RemoveVehicle(T value)
         {
 
