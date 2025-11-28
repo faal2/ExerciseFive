@@ -16,7 +16,7 @@ namespace ExerciseFive.UI
             MenuLoop();
         }
 
-        public int InitializeGarage()
+        public (int, bool) InitializeGarage()
         {
             Console.WriteLine("Before we can start please pick the size of the garage (the amount of parking spots),"
                 + " please remember that once you pick the size it is permenant for the duration of the application.");
@@ -36,7 +36,31 @@ namespace ExerciseFive.UI
                             Environment.Exit(0);
                         }
                         Console.WriteLine($"The size of the garage: {sizeOfGarage}");
-                        return sizeOfGarage; 
+
+                        while (true)
+                        {
+                            Console.WriteLine("Would you like to fill the garage with vehicles (Seed Data)? (y/n)");
+                            Console.Write("Choice: ");
+                            string? seedInput = Console.ReadLine()?.ToLower();
+
+                            if (seedInput == "0")
+                            {
+                                Console.WriteLine("You have ended the application");
+                                Environment.Exit(0);
+                            }
+                            else if (seedInput == "y")
+                            {
+                                return (sizeOfGarage, true);
+                            }
+                            else if (seedInput == "n")
+                            {
+                                return (sizeOfGarage, false);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please enter some valid input.");
+                            }
+                        }
                     }
                     else
                     {
