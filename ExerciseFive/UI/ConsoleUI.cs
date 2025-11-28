@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExerciseFive.GarageWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,21 @@ namespace ExerciseFive.UI
 {
     internal class ConsoleUI
     {
-
-        public ConsoleUI()
+        private GarageManager _garageManager;
+        public void Run()
         {
             Console.WriteLine("Welcome to the Garage application!");
             int sizeOfGarage = GetGarageSize();
-            bool seedData = GetSeedData();
-            MenuLoop();
+            _garageManager.MakeGarageSize(sizeOfGarage);
+        }
+
+        public ConsoleUI(GarageManager garageManager)
+        {
+            _garageManager = garageManager;
+            //Console.WriteLine("Welcome to the Garage application!");
+            //int sizeOfGarage = GetGarageSize();
+            //bool seedData = GetSeedData();
+            //MenuLoop();
         }
 
         public int GetGarageSize()
