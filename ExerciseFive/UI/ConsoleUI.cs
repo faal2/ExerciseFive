@@ -56,8 +56,9 @@ namespace ExerciseFive.UI
             while (true)
             {
                 Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 0) of your choice"
-                    + "\n1. Examine a List"
-                    + "\n2. Examine a Queue"
+                    + "\n1. View garage"
+                    + "\n2. Search"
+                    + "\n2. Check in/check out"
                     + "\n0. Exit the application");
                 char input = ' '; //Creates the character input to be used with the switch-case below.
                 try
