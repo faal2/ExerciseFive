@@ -18,10 +18,7 @@ namespace ExerciseFive.GarageWorld
 
         public IEnumerable<Vehicle> GetVehicles ()
         {
-            foreach (Vehicle vehicle in _garage)
-            {
-                yield return vehicle;
-            }
+            return _garage;
         }
         public bool IsRegisterNumberUnique(string registerNumber)
         {
