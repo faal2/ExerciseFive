@@ -1,4 +1,5 @@
 ﻿using ExerciseFive.GarageWorld;
+using ExerciseFive.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +16,18 @@ namespace ExerciseFive.UI
             Console.WriteLine("Welcome to the Garage application!");
             int sizeOfGarage = GetGarageSize();
             _garageManager.MakeGarageSize(sizeOfGarage);
+
+            if (GetSeedData())
+            {
+                _garageManager.ToSeedData();
+            }
+
+            MenuLoop();
         }
 
         public ConsoleUI(GarageManager garageManager)
         {
             _garageManager = garageManager;
-            //Console.WriteLine("Welcome to the Garage application!");
-            //int sizeOfGarage = GetGarageSize();
-            //bool seedData = GetSeedData();
-            //MenuLoop();
         }
 
         public int GetGarageSize()
@@ -141,6 +145,134 @@ namespace ExerciseFive.UI
                     default:
                         Console.WriteLine("Please enter some valid input (0, 1, 2, 3, 4, 5)");
                         break;
+                }
+            }
+        }
+
+        private void WriteToConsoleVehicles()
+        {
+            IEnumerable<Vehicle> vehicles = _garageManager.GetVehicles();
+            if (!vehicles.Any())
+            {
+                Console.WriteLine("The garage is empty.");
+                return;
+            }
+
+            foreach (Vehicle vehicle in vehicles)
+            {
+                Console.WriteLine(vehicle.ToString());
+            }
+        }
+
+        public void ParkVehicle()
+        {
+            while (true)
+            {
+                Console.WriteLine("Please choose a vehicle type to park by inputting the number"
+                    + "\n1. Car"
+                    + "\n2. Bus"
+                    + "\n3. Motorcycle"
+                    + "\n4. Boat"
+                    + "\n5. Airplane"
+                    + "\n0. Return to main menu");
+
+                Console.Write("Write: ");
+                string? input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter some input!");
+                    continue;
+                }
+
+                char nav = input[0];
+
+                if (nav == '0')
+                {
+                    Console.WriteLine("Back to main menu");
+                    break;
+                }
+
+                Console.WriteLine("Please enter the Registration Number:");
+                Console.Write("Write: ");
+                string? registerNumber = Console.ReadLine();
+                if (string.IsNullOrEmpty(registerNumber))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter some input!");
+                    continue;
+                }
+
+                Console.WriteLine("Please enter the Color (Red, Blue, Black, White, Green):");
+                Console.Write("Write: ");
+                string? colorInput = Console.ReadLine();
+                Enum.TryParse(colorInput, true, out Color color);
+
+                Vehicle? vehicleToAdd = null;
+
+                switch (nav)
+                {
+                    case '1':
+                        Console.WriteLine("Is the car electric? (y/n)");
+                        Console.Write("Write: ");
+                        string? elecInput = Console.ReadLine();
+                        bool isElectric = (elecInput?.ToLower() == "y");
+
+                        vehicleToAdd = new Car(registerNumber, color, isElectric);
+                        break;
+
+                    case '2':
+                        Console.WriteLine("How many seats?");
+                        Console.Write("Write: ");
+                        string? seatInput = Console.ReadLine();
+                        int.TryParse(seatInput, out int seats);
+
+                        vehicleToAdd = new Bus(registerNumber, color, seats);
+                        break;
+
+                    case '3':
+                        Console.WriteLine("Has pillion seat? (y/n)");
+                        Console.Write("Write: ");
+                        string? pillionInput = Console.ReadLine();
+                        bool hasPillion = (pillionInput?.ToLower() == "y");
+
+                        vehicleToAdd = new Motorcycle(registerNumber, color, hasPillion);
+                        break;
+
+                    case '4':
+                        Console.WriteLine("Has roof? (y/n)");
+                        Console.Write("Write: ");
+                        string? roofInput = Console.ReadLine();
+                        bool hasRoof = (roofInput?.ToLower() == "y");
+
+                        vehicleToAdd = new Boat(registerNumber, color, hasRoof);
+                        break;
+
+                    case '5':
+                        Console.WriteLine("Lenght of it?"); 
+                        Console.Write("Write: ");
+                        string? lenghtInput = Console.ReadLine();
+                        int.TryParse(lenghtInput, out int lenght);
+                        vehicleToAdd = new Airplane(registerNumber, color, lenght);
+                        break;
+
+                    default:
+                        Console.WriteLine("Please enter some valid input (1-5, 0)");
+                        continue;
+                }
+
+                if (vehicleToAdd != null)
+                {
+                    bool success = _garageManager.Park(vehicleToAdd);
+                    if (success)
+                    {
+                        Console.WriteLine($"{registerNumber} was parked.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Could not complete parking. Either the garage is full or the number is taken.");
+                    }
+                    Console.WriteLine("\n");
                 }
             }
         }
