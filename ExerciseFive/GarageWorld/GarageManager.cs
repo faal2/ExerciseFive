@@ -26,8 +26,17 @@ namespace ExerciseFive.GarageWorld
             }
         }
 
-        //public bool Park()
-        //{ }
+        public bool Park(Vehicle newVehicle)
+        {
+            foreach (Vehicle previousVehicle in _garage)
+            {
+                if (newVehicle.RegisterNumber == previousVehicle.RegisterNumber)
+                    return false;
+            }
+            _garage.AddVehicle(newVehicle);
+            return true;
+        }
+
 
 
     }
