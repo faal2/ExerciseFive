@@ -10,5 +10,12 @@ namespace ExerciseFive.Vehicles
     internal class Boat(string registerNumber, Color color, bool hasRoof) : Vehicle(registerNumber, color, 0)
     {
         public bool HasRoof { get; } = hasRoof;
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Roof: {HasRoof}";
+        }
+
     }
-}
+    
+    }

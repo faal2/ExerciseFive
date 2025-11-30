@@ -11,5 +11,10 @@ namespace ExerciseFive.Vehicles
     {
         public int NumberOfSeats { get; } = seats;
 
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Seats: {NumberOfSeats}";
+        }
+
     }
 }

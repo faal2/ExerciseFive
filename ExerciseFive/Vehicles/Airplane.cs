@@ -11,6 +11,11 @@ namespace ExerciseFive.Vehicles
     {
         public int Lenght { get; set; }
 
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Lenght: {Lenght}";
+        }
+
     }
 
-}
+    }

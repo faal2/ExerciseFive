@@ -10,5 +10,10 @@ namespace ExerciseFive.Vehicles
     {
         public bool isElectric { get; } = isElectric;
 
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Electric: {isElectric}";
+        }
+
     }
 }
