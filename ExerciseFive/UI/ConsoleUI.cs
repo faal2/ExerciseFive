@@ -138,6 +138,44 @@ namespace ExerciseFive.UI
             }
         }
 
+        public void WriteSearch()
+        {
+            Console.WriteLine("Please answer the following to search. ");
+
+            Console.WriteLine("Registration Number:");
+            Console.Write("Write: ");
+            string? registerNumber = Console.ReadLine();
+            if (registerNumber == null) registerNumber = "";
+
+            Console.WriteLine("Color (Red, Blue, Black, White, Green):");
+            Console.Write("Write: ");
+            string? color = Console.ReadLine();
+            if (color == null) color = "";
+
+            Console.WriteLine("Number of wheels:");
+            Console.Write("Write: ");
+            string? wheelInput = Console.ReadLine();
+            int.TryParse(wheelInput, out int wheels);
+
+
+            IEnumerable<Vehicle> outputs = _garageManager.Search(registerNumber, color, wheels);
+
+            Console.WriteLine("\nPresenting: ");
+            bool aHit = false;
+
+            foreach (Vehicle vehicle in outputs)
+            {
+                Console.WriteLine(vehicle.ToString());
+                aHit = true;
+            }
+
+            if (!aHit)
+            {
+                Console.WriteLine("No hits.");
+            }
+
+            Console.WriteLine("\n");
+        }
         public void MenuLoop()
         {
             while (true)
