@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.UI
 {
-    internal class ConsoleUI
+    internal class ConsoleUI : IUI
     {
         private GarageManager _garageManager;
         public void Run()
