@@ -14,7 +14,6 @@ namespace ExerciseFive.GarageWorld
         public void MakeGarageSize(int capcacity)
         {
             _garage = new Garage<Vehicle>(capcacity);
-            Console.WriteLine($"HERE {capcacity} and {_garage}");
         }
 
         public IEnumerable<Vehicle> GetVehicles ()
@@ -24,23 +23,29 @@ namespace ExerciseFive.GarageWorld
                 yield return vehicle;
             }
         }
-
-        public bool Park(Vehicle newVehicle)
+        public bool IsRegisterNumberUnique(string registerNumber)
         {
             foreach (Vehicle previousVehicle in _garage)
             {
-                if (newVehicle.RegisterNumber == previousVehicle.RegisterNumber)
+                if (previousVehicle.RegisterNumber == registerNumber)
+                {
                     return false;
+                }
+
             }
-            _garage.AddVehicle(newVehicle);
             return true;
+        }
+
+        public bool Park(Vehicle newVehicle)
+        {
+            return (_garage.AddVehicle(newVehicle));
         }
 
         public bool Depart(Vehicle oldVehicle)
         {
             foreach (Vehicle previousVehicle in _garage)
             {
-                if (oldVehicle.RegisterNumber == previousVehicle.RegisterNumber)
+                if (previousVehicle.RegisterNumber == oldVehicle.RegisterNumber)
                 {
                     _garage.RemoveVehicle(oldVehicle);
                     return true;
