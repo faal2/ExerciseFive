@@ -8,5 +8,7 @@ namespace ExerciseFive.GarageWorld
 {
     internal interface IManager
     {
+
+        void MakeGarageSize(int capactiy);
     }
 }

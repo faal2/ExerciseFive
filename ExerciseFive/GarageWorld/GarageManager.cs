@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.GarageWorld
 {
-    internal class GarageManager
+    internal class GarageManager : IManager
     {
         private Garage<Vehicle> _garage;
 
