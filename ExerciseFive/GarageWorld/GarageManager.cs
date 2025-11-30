@@ -38,13 +38,13 @@ namespace ExerciseFive.GarageWorld
             return (_garage.AddVehicle(newVehicle));
         }
 
-        public bool Depart(Vehicle oldVehicle)
+        public bool Depart(string RegisterNumber)
         {
             foreach (Vehicle previousVehicle in _garage)
             {
-                if (previousVehicle.RegisterNumber == oldVehicle.RegisterNumber)
+                if (previousVehicle.RegisterNumber == RegisterNumber)
                 {
-                    _garage.RemoveVehicle(oldVehicle);
+                    _garage.RemoveVehicle(previousVehicle);
                     return true;
                 }
 
