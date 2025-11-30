@@ -18,6 +18,17 @@ namespace ExerciseFive.GarageWorld
             Console.WriteLine($"HERE {capcacity} and {_garage}");
         }
 
+        public IEnumerable<Vehicle> GetVehicles ()
+        {
+            foreach (Vehicle vehicle in _garage)
+            {
+                yield return vehicle;
+            }
+        }
+
+        //public bool Park()
+        //{ }
+
 
     }
 }
