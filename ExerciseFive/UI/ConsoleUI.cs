@@ -125,19 +125,19 @@ namespace ExerciseFive.UI
                 switch (input)
                 {
                     case '1':
-
+                        WriteToConsoleVehicles();
                         break;
                     case '2':
-
+                        WriteStatistics();
                         break;
                     case '3':
-
+                        WriteSearch(); 
                         break;
                     case '4':
-
+                        ParkVehicle(); 
                         break;
                     case '5':
-
+                        DepartVehicle();
                         break;
                     case '0':
                         Environment.Exit(0);
@@ -161,6 +161,25 @@ namespace ExerciseFive.UI
             foreach (Vehicle vehicle in vehicles)
             {
                 Console.WriteLine(vehicle.ToString());
+            }
+        }
+
+        public void WriteStatistics()
+        {
+            //Lista fordonstyper och hur många av varje som står i garaget 
+
+            IEnumerable<Vehicle> vehicles = _garageManager.GetVehicles();
+            if (!vehicles.Any())
+            {
+                Console.WriteLine("The garage is empty.");
+                return;
+            }
+
+            var uniqueTypes = vehicles.Select(v => v.GetType()).Distinct();
+            foreach (var type in uniqueTypes)
+            {
+                int count = vehicles.Count(v => v.GetType() == type);
+                Console.WriteLine($"{type.Name}: {count}");
             }
         }
 
