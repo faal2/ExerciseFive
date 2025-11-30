@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    internal class Motorcycle(string registerNumber, Color color, bool hasPillionSeat) : Vehicle(registerNumber, color, 2)
+    internal class Motorcycle(string registerNumber, Color color, bool hasPillionSeat = false) : Vehicle(registerNumber, color, 2)
     {
-        public bool HasPillionSeat { get; set; } = hasPillionSeat;
+        public bool HasPillionSeat { get;} = hasPillionSeat;
 
         public override string ToString()
         {
