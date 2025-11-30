@@ -30,6 +30,43 @@ namespace ExerciseFive.UI
             _garageManager = garageManager;
         }
 
+        public void DepartVehicle()
+        {
+            while (true)
+            {
+                Console.WriteLine("Please enter the registration number of the vehicle you want to check out"
+                    + "\n0. Return to main menu");
+
+                Console.Write("Write: ");
+                string? input = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter some input!");
+                    continue;
+                }
+
+                if (input == "0")
+                {
+                    Console.WriteLine("Back to main menu");
+                    break;
+                }
+
+                bool isRemoved = _garageManager.Depart(input);
+
+                if (isRemoved)
+                {
+                    Console.WriteLine($"It worked. the register number{input} is out.");
+                }
+                else
+                {
+                    Console.WriteLine($"This register number {input} is not in.");
+                }
+                Console.WriteLine("\n");
+            }
+        }
+
         public int GetGarageSize()
         {
             Console.WriteLine("Before we can start please pick the size of the garage (the amount of parking spots),"
