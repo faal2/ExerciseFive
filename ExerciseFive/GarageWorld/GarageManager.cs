@@ -1,7 +1,6 @@
 ﻿using ExerciseFive.Vehicles;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +50,11 @@ namespace ExerciseFive.GarageWorld
             return false;
         }
 
-
+        public void ToSeedData()
+        {
+            var hyrBil1 = new Car("1234ABC", Color.Red);
+            _garage.AddVehicle(hyrBil1);
+        }
 
     }
 }
