@@ -58,5 +58,14 @@ namespace ExerciseFive.GarageWorld
             _garage.AddVehicle(hyrBil1);
         }
 
+
+        public IEnumerable<Vehicle> Search(string registerNumber, string color, int wheels)
+        {
+            return _garage.Where(t =>
+                t.RegisterNumber.Contains(registerNumber) &&
+                t.Color.ToString().Contains(color) &&
+                t.Wheels == wheels
+            );
+        }
     }
 }
