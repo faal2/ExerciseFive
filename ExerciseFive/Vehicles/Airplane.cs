@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    public class Airplane(string registerNumber, Color color, int wheels = 6) : Vehicle(registerNumber, color, wheels)
+    public class Airplane(string registerNumber, Color color, int Lenght, int wheels = 6) : Vehicle(registerNumber, color, wheels)
     {
-        public int Lenght { get;}
+        public int Lenght { get; } = Lenght;
 
         public override string ToString()
         {
