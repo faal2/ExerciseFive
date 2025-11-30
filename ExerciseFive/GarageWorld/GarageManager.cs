@@ -37,6 +37,20 @@ namespace ExerciseFive.GarageWorld
             return true;
         }
 
+        public bool Depart(Vehicle oldVehicle)
+        {
+            foreach (Vehicle previousVehicle in _garage)
+            {
+                if (oldVehicle.RegisterNumber == previousVehicle.RegisterNumber)
+                {
+                    _garage.RemoveVehicle(oldVehicle);
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
 
 
     }
