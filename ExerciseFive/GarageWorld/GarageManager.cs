@@ -20,11 +20,18 @@ namespace ExerciseFive.GarageWorld
         {
             return _garage;
         }
+
+        public bool DoStringsMatch(string first, string second)
+        {
+            if (first.ToLower() == second.ToLower())
+                return true;
+            return false;
+        }
         public bool IsRegisterNumberUnique(string registerNumber)
         {
             foreach (Vehicle previousVehicle in _garage)
             {
-                if (previousVehicle.RegisterNumber == registerNumber)
+                if (DoStringsMatch(previousVehicle.RegisterNumber, registerNumber))
                 {
                     return false;
                 }

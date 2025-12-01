@@ -30,12 +30,6 @@ namespace ExerciseFive.UI
             _garageManager = garageManager;
         }
 
-        public bool DoStringsMatch (string first, string second)
-        {
-            if (first.ToLower() == second.ToLower())
-                return true;
-            return false;
-        }
 
         public void DepartVehicle()
         {
