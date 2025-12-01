@@ -251,11 +251,25 @@ namespace ExerciseFive.UI
                 return;
             }
 
-            var uniqueTypes = vehicles.Select(v => v.GetType()).Distinct();
-            foreach (var type in uniqueTypes)
+            Dictionary<string, int> vehicleAmounts = new Dictionary<string, int>();
+
+            foreach (var vehicle in vehicles)
             {
-                int count = vehicles.Count(v => v.GetType() == type);
-                Console.WriteLine($"{type.Name}: {count}");
+                string type = vehicle.GetType().Name;
+
+                if (vehicleAmounts.ContainsKey(type))
+                {
+                    vehicleAmounts[type]++;
+                }
+                else
+                {
+                    vehicleAmounts.Add(type, 1);
+                }
+            }
+
+            foreach (var vehicle in vehicleAmounts)
+            {
+                Console.WriteLine($"{vehicle.Key}: {vehicle.Value}");
             }
         }
 
@@ -303,7 +317,7 @@ namespace ExerciseFive.UI
                 string? colorInput = Console.ReadLine();
                 Enum.TryParse(colorInput, true, out Color color);
 
-                Vehicle? vehicleToAdd = null;
+                Vehicle? vehicleToPark = null;
 
                 switch (nav)
                 {
@@ -313,7 +327,7 @@ namespace ExerciseFive.UI
                         string? elecInput = Console.ReadLine();
                         bool isElectric = (elecInput?.ToLower() == "y");
 
-                        vehicleToAdd = new Car(registerNumber, color, isElectric);
+                        vehicleToPark = new Car(registerNumber, color, isElectric);
                         break;
 
                     case '2':
@@ -322,7 +336,7 @@ namespace ExerciseFive.UI
                         string? seatInput = Console.ReadLine();
                         int.TryParse(seatInput, out int seats);
 
-                        vehicleToAdd = new Bus(registerNumber, color, seats);
+                        vehicleToPark = new Bus(registerNumber, color, seats);
                         break;
 
                     case '3':
@@ -331,7 +345,7 @@ namespace ExerciseFive.UI
                         string? pillionInput = Console.ReadLine();
                         bool hasPillion = (pillionInput?.ToLower() == "y");
 
-                        vehicleToAdd = new Motorcycle(registerNumber, color, hasPillion);
+                        vehicleToPark = new Motorcycle(registerNumber, color, hasPillion);
                         break;
 
                     case '4':
@@ -340,7 +354,7 @@ namespace ExerciseFive.UI
                         string? roofInput = Console.ReadLine();
                         bool hasRoof = (roofInput?.ToLower() == "y");
 
-                        vehicleToAdd = new Boat(registerNumber, color, hasRoof);
+                        vehicleToPark = new Boat(registerNumber, color, hasRoof);
                         break;
 
                     case '5':
@@ -348,7 +362,7 @@ namespace ExerciseFive.UI
                         Console.Write("Write: ");
                         string? lenghtInput = Console.ReadLine();
                         int.TryParse(lenghtInput, out int lenght);
-                        vehicleToAdd = new Airplane(registerNumber, color, lenght);
+                        vehicleToPark = new Airplane(registerNumber, color, lenght);
                         break;
 
                     default:
@@ -356,9 +370,9 @@ namespace ExerciseFive.UI
                         continue;
                 }
 
-                if (vehicleToAdd != null)
+                if (vehicleToPark != null)
                 {
-                    bool success = _garageManager.Park(vehicleToAdd);
+                    bool success = _garageManager.Park(vehicleToPark);
                     if (success)
                     {
                         Console.WriteLine($"{registerNumber} was parked.");
