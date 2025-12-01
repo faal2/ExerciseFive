@@ -30,6 +30,13 @@ namespace ExerciseFive.UI
             _garageManager = garageManager;
         }
 
+        public bool DoStringsMatch (string first, string second)
+        {
+            if (first.ToLower() == second.ToLower())
+                return true;
+            return false;
+        }
+
         public void DepartVehicle()
         {
             while (true)
@@ -364,6 +371,7 @@ namespace ExerciseFive.UI
                     }
                     else
                     {
+                        
                         Console.WriteLine("Could not complete parking. Either the garage is full or the number is taken.");
                     }
                     Console.WriteLine("\n");
