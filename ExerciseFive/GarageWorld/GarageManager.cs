@@ -82,13 +82,47 @@ namespace ExerciseFive.GarageWorld
         }
 
 
-        public IEnumerable<Vehicle> Search(string registerNumber, string color, int wheels)
+        public IEnumerable<Vehicle> Search(string type, string registerNumber, string color, int wheels)
         {
+
             return _garage.Where(t =>
-                t.RegisterNumber.Contains(registerNumber) &&
-                t.Color.ToString().Contains(color) &&
-                t.Wheels == wheels
+
+            (string.IsNullOrEmpty(type) || t.GetType().Name.ToLower().Contains(type.ToLower()))
+
+            &&
+
+            (string.IsNullOrEmpty(registerNumber) || t.RegisterNumber.ToLower().Contains(registerNumber.ToLower()))
+
+            && 
+
+            (string.IsNullOrEmpty(color) || t.Color.ToString().ToLower().Contains(color.ToLower()))
+
+            && 
+
+            (wheels == 0 || t.Wheels == wheels)
+
             );
+
+            //return _garage.Where(t =>
+            //    t.RegisterNumber.Contains(registerNumber) &&
+            //    t.Color.ToString().Contains(color) &&
+            //    t.Wheels == wheels
+            //);
+        }
+
+        public void PrintDebugInfo()
+        {
+            Console.WriteLine("--- DEBUG: WHAT IS INSIDE _garage? ---");
+
+            // _garage is the collection. "v" is the specific Vehicle object.
+            foreach (Vehicle v in _garage)
+            {
+                Console.WriteLine($"OBJECT TYPE: {v.GetType().Name}"); // e.g., Car, Boat
+                Console.WriteLine($"   Property 1 (RegisterNumber): '{v.RegisterNumber}'");
+                Console.WriteLine($"   Property 2 (Color):          '{v.Color}'");
+                Console.WriteLine($"   Property 3 (Wheels):         '{v.Wheels}'");
+                Console.WriteLine("--------------------------------------");
+            }
         }
     }
 }

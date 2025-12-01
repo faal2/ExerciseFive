@@ -13,7 +13,7 @@ namespace ExerciseFive.GarageWorld
         void MakeGarageSize(int capactiy);
         void ToSeedData();
 
-        IEnumerable<Vehicle> Search(string registerNumber, string color, int wheels);
+        IEnumerable<Vehicle> Search(string type, string registerNumber, string color, int wheels);
         bool Depart(string registerNumber);
 
         (bool, string) Park(Vehicle newVehicle);

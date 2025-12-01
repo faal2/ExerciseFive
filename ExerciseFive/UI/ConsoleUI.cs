@@ -13,6 +13,7 @@ namespace ExerciseFive.UI
         private IManager _garageManager;
         public void Run()
         {
+            
             Console.WriteLine("Welcome to the Garage application!");
             int sizeOfGarage = GetGarageSize();
             _garageManager.MakeGarageSize(sizeOfGarage);
@@ -142,24 +143,32 @@ namespace ExerciseFive.UI
         public void WriteSearch()
         {
             Console.WriteLine("Please answer the following to search. ");
+            Console.WriteLine("If you don't want to specify for a particular question, just leave blank and press ENTER.");
+
+
+            Console.WriteLine("What type of vehicle: Car, Boat, Airplane, Bus, Motorcycle:");
+            Console.Write("Write: ");
+            string? type = Console.ReadLine();
+            if (type == null) type = "";
+
 
             Console.WriteLine("Registration Number:");
             Console.Write("Write: ");
             string? registerNumber = Console.ReadLine();
             if (registerNumber == null) registerNumber = "";
 
-            Console.WriteLine("Color (Red, Blue, Black, White, Green):");
+            Console.WriteLine("Color (White, Black, Red, Green, Blue):");
             Console.Write("Write: ");
             string? color = Console.ReadLine();
             if (color == null) color = "";
 
             Console.WriteLine("Number of wheels:");
             Console.Write("Write: ");
-            string? wheelInput = Console.ReadLine();
-            int.TryParse(wheelInput, out int wheels);
+            string? wheelUser = Console.ReadLine();
+            int.TryParse(wheelUser, out int wheels);
 
 
-            IEnumerable<Vehicle> outputs = _garageManager.Search(registerNumber, color, wheels);
+            IEnumerable<Vehicle> outputs = _garageManager.Search(type, registerNumber, color, wheels);
 
             Console.WriteLine("\nPresenting: ");
             bool aHit = false;
