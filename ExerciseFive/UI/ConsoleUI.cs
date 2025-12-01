@@ -10,7 +10,7 @@ namespace ExerciseFive.UI
 {
     internal class ConsoleUI : IUI
     {
-        private GarageManager _garageManager;
+        private IManager _garageManager;
         public void Run()
         {
             Console.WriteLine("Welcome to the Garage application!");
@@ -25,7 +25,7 @@ namespace ExerciseFive.UI
             MenuLoop();
         }
 
-        public ConsoleUI(GarageManager garageManager)
+        public ConsoleUI(IManager garageManager)
         {
             _garageManager = garageManager;
         }

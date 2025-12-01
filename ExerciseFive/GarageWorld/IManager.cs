@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExerciseFive.Vehicles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,17 @@ namespace ExerciseFive.GarageWorld
     {
 
         void MakeGarageSize(int capactiy);
+        void ToSeedData();
+
+        IEnumerable<Vehicle> Search(string registerNumber, string color, int wheels);
+        bool Depart(string registerNumber);
+
+        (bool, string) Park(Vehicle newVehicle);
+
+        bool IsRegisterNumberUnique(string registerNumber);
+
+        bool DoStringsMatch(string first, string second);
+        IEnumerable<Vehicle> GetVehicles();
+
     }
 }

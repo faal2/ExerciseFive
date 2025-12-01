@@ -1,6 +1,6 @@
 ﻿using ExerciseFive.GarageWorld;
 using ExerciseFive.UI;
 
-GarageManager manager = new GarageManager();
-ConsoleUI ui = new ConsoleUI(manager);
+IManager manager = new GarageManager();
+IUI ui = new ConsoleUI(manager);
 ui.Run();
