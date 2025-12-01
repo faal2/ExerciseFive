@@ -40,9 +40,24 @@ namespace ExerciseFive.GarageWorld
             return true;
         }
 
-        public bool Park(Vehicle newVehicle)
+        public (bool, string) Park(Vehicle newVehicle)
         {
-            return (_garage.AddVehicle(newVehicle));
+            if (IsRegisterNumberUnique(newVehicle.RegisterNumber))
+            {
+                 if (_garage.AddVehicle(newVehicle))
+                {
+                    return (true, "Succesfully added");
+                }
+                else
+                {
+                    return (false, "Failed due to garage full");
+                }
+
+                    
+            }
+            else
+            { return (false, "Failed due to an existing register number in the garage."); }
+
         }
 
 

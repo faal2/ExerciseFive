@@ -372,15 +372,12 @@ namespace ExerciseFive.UI
 
                 if (vehicleToPark != null)
                 {
-                    bool success = _garageManager.Park(vehicleToPark);
+                    var (success, outcome) = _garageManager.Park(vehicleToPark);
+                    Console.WriteLine(outcome);
+
                     if (success)
                     {
-                        Console.WriteLine($"{registerNumber} was parked.");
-                    }
-                    else
-                    {
-                        
-                        Console.WriteLine("Could not complete parking. Either the garage is full or the number is taken.");
+                        break;
                     }
                     Console.WriteLine("\n");
                 }
