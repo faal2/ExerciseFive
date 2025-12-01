@@ -45,11 +45,12 @@ namespace ExerciseFive.GarageWorld
             return (_garage.AddVehicle(newVehicle));
         }
 
-        public bool Depart(string RegisterNumber)
+
+        public bool Depart(string registerNumber)
         {
             foreach (Vehicle previousVehicle in _garage)
             {
-                if (previousVehicle.RegisterNumber == RegisterNumber)
+                if (DoStringsMatch(previousVehicle.RegisterNumber, registerNumber))
                 {
                     _garage.RemoveVehicle(previousVehicle);
                     return true;
