@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExerciseFive.Vehicles
 {
-    internal class Car(string registerNumber, Color color, bool isElectric = false) : Vehicle(registerNumber, color, 4)
+    public class Car(string registerNumber, Color color, bool isElectric = false) : Vehicle(registerNumber, color, 4)
     {
         public bool isElectric { get; } = isElectric;
 

@@ -10,7 +10,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ExerciseFive.GarageWorld
 {
-    internal class Garage<T> : IEnumerable<T> where T : Vehicle
+    public class Garage<T> : IEnumerable<T> where T : Vehicle
     {
 
         private int _occupied = 0;
