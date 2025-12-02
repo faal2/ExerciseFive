@@ -8,7 +8,7 @@ namespace ExerciseFive.Tests
     {
 
         [Fact]
-        public void Is_Garage_Full()
+        public void AddVehicle_GarageNotFull_CountIncreases()
         {
                 //Arrange
                 var garageTest = new Garage<Vehicle>(10);
@@ -23,7 +23,7 @@ namespace ExerciseFive.Tests
 
 
         [Fact]
-        public void Is_Vehicle_Removed()
+        public void RemoveVehicle_CountDecreases()
         {
             //Arrange
             var garageTest = new Garage<Vehicle>(10);
